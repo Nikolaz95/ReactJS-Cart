@@ -1,0 +1,65 @@
+
+
+.customBilSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  /* border: 1px solid black; */
+}
+
+/* .customBilDownloadBtnContent {
+  border: 1px solid black;
+} */
+
+/* .customBilMain {
+  border: 1px solid black;
+} */
+
+
+/* main bil content */
+
+
+.customBilMain {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+/* .customBilLogo {
+  border: 1px solid black;
+} */
+
+
+/* table content */
+
+.tableContent {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+}
+
+table {
+  /* border: 1px solid black; */
+  padding: 10px;
+}
+
+.tableHeader {
+  /* border: 1px solid black; */
+  background-color: rgb(92,142,127);
+  color: white;
+}
+
+.tableHeader th {
+  padding: 10px;
+}
+
+.tableBody td{
+  text-align: center;
+  padding: 10px;
+}
+

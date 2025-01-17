@@ -1,0 +1,46 @@
+.image-component {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* Variant Styles */
+
+
+.image-component.iconImg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.iconCartXImg {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.image-component.productImg {
+    width: 100%;
+    height: 100%;;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+
+.iconImgRemoveCartModal {
+    width: 25px;
+    height: 25px;
+}
+
+.iconImgProduct {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.logoImg {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 20px;
+}

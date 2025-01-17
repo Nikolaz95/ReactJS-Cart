@@ -1,0 +1,119 @@
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.9s ease;
+}
+
+
+
+/*btn add to cart*/
+.button.addTocart   {
+    position: relative;
+    bottom: 25px;
+    left: 5rem;
+    width: 10rem;
+    border-radius: 2.5rem;
+    height: 2.5rem;
+}
+
+.btnDecInc {
+    border: 1px solid white;
+    background-color: transparent;
+    color: black;
+}
+
+.btnDecInc:hover{
+    background-color: white;
+}
+
+
+.button.countingBtn {
+    background-color: rgb(199,58,15);
+    position: relative;
+    bottom: 25px;
+    left: 5rem;
+    width: 10rem;
+    border-radius: 2.5rem;
+    height: 2.5rem;
+}
+
+
+
+.modalCloseX {
+    color: rgb(135, 0, 0);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.confirmOrder {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: center;
+}
+
+
+/* modal btn */
+
+.confirmOrder:hover {
+    background-color: green;
+    color: white;
+}
+
+.cancelOrder {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cancelOrder:hover {
+    background-color: rgb(209, 22, 22);;
+    color: white;
+}
+
+.clearcart {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.clearcart:hover {
+    background-color: rgb(223, 71, 16);;
+    color: white;
+}
+
+.removeItemCartModal {
+    color: rgb(135, 0, 0);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+    .button.addTocart   {
+        position: relative;
+        bottom: 25px;
+        left: 20px;
+        width: 10rem;
+        border-radius: 2.5rem;
+        height: 2.5rem;
+    } 
+    .button.countingBtn {
+        position: relative;
+        bottom: 25px;
+        left: 20px;
+        width: 10rem;
+        border-radius: 2.5rem;
+        height: 2.5rem;
+    }
+}

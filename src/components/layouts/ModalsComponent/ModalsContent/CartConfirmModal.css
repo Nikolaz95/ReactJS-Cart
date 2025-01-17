@@ -1,0 +1,81 @@
+
+
+
+.modalConfirmSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* width: 400px; */
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.modalConfirmTitleText {
+    font-size: 20px;
+    text-align: center;
+}
+
+.modalConfirmOrderContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.productOrderedInnerSummary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    padding: 5px;
+    background-color: rgb(252,249,247);
+}
+
+.productOrderedSummaryList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.productOrderedSummaryListTop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.productOrderedSummaryListBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.modalConfirmBotton {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modalConfirmOrder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.modalConfirmBtn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.invoiceHide {
+    display: none;
+}

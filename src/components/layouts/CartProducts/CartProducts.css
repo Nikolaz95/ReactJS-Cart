@@ -1,0 +1,17 @@
+
+
+.cartProductSection {
+    display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        border-radius: 30px;
+        height: fit-content;
+        padding: 10px;
+}
+
+.cartProductSectionContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

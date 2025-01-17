@@ -1,0 +1,83 @@
+
+.cartSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    height: fit-content;
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+.cartContent {
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+    gap: 20px;
+}
+
+.cartHeaderText {
+    text-align: center;
+}
+
+.imageContent {
+    width: 220px;
+    height: 220px;
+}
+
+
+/* kada je nesto u korpi */
+
+.cartMainContent {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.cartProductInfoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    /* border: 1px solid; */
+}
+
+.cartProductInfoSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.articleSeperator {
+    border: 1px solid;
+}
+
+
+.cartBottomContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.orderTotalContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.carbonNeutral {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.confirmButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}

@@ -1,0 +1,59 @@
+
+body {
+    background-color: rgb(252,249,247);
+}
+
+
+.homePageMain {
+    padding: 20px;
+    /* border: 1px solid black; */
+}
+
+.homePageHeaderContent {
+    padding: 10px;
+}
+
+
+.homePageHeader {
+    font-size: 30px;
+}
+
+
+
+/* content style */
+
+.homePageMainContentSection {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    /* border: 1px solid black; */
+}
+
+
+/* .homepageCardContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 10px;
+    border: 1px solid black;
+} */
+
+
+@media only screen and (max-width: 1024px) {
+    .homePageMainContentSection {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        border: 1px solid black;
+    } 
+}
+
+@media only screen and (max-width: 425px) {
+    .homePageMainContentSection {
+        display: grid;
+        grid-template-columns:  1fr;
+        gap: 20px;
+        border: 1px solid black;
+    } 
+}
+

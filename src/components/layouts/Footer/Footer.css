@@ -123,6 +123,17 @@
   animation: portfolioGradient 6s ease infinite;
 }
 
+.footerPortfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footerRepoLink {
+  margin-top: 16px;
+  font-size: 15px;
+}
+
 .portfolioArrow {
   transition: transform 0.3s var(--ease-out);
 }

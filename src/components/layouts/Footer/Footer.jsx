@@ -9,6 +9,7 @@ import useCurrentYear from '../../hooks/useCurrentYear';
 import { CupcakeIcon, GithubIcon, LinkedinIcon, MailIcon, MapPinIcon, SparkleIcon } from '../Icons/Icons';
 
 const PORTFOLIO_URL = 'https://nikolazovkoportfolio.netlify.app/#home';
+const REPO_URL = 'https://github.com/Nikolaz95/ReactJS-Cart';
 const MAP_URL = 'https://www.google.com/maps/place/Stockholm/@59.0968211,17.5065602,7.75z/data=!4m6!3m5!1s0x465f763119640bcb:0xa80d27d3679d7766!8m2!3d59.3293235!4d18.0685808!16zL20vMDZteHM?entry=ttu';
 
 const socials = [
@@ -87,6 +88,9 @@ const Footer = () => {
                         <SparkleIcon /> See my portfolio
                         <span className="portfolioArrow" aria-hidden="true">→</span>
                     </motion.a>
+                    <a href={REPO_URL} target="_blank" rel="noreferrer" className="footerLink footerRepoLink">
+                        <GithubIcon /> Source code on GitHub
+                    </a>
                 </motion.div>
             </motion.div>
 

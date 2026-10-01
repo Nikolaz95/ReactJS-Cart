@@ -1,35 +1,46 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import useTitle from '../../hooks/useTitle';
 
 
 //import css
 import "./HomePage.css";
 
 //import components
+import Hero from '../../layouts/Hero/Hero';
 import Products from '../../layouts/ProductComponent/Products';
 import Cart from '../../layouts/Cart/Cart';
-import CartProducts from '../../layouts/CartProducts/CartProducts';
-import Invoice from '../../layouts/InvoicePDF/Invoice';
+import MobileCartBar from '../../layouts/MobileCartBar/MobileCartBar';
 
 
 const HomePage = () => {
-    const [itemCount, setItemCount] = useState({});
+    useTitle('Sweet Bites | Dessert Cart');
+
     return (
-        <section className='homePageSection'>
+        <main className='homePage'>
+            <Hero />
 
-            <main className='homePageMain'>
-                <div className='homePageHeaderContent'>
-                    <h1 className='homePageHeader'>Desserts :</h1>
-                </div>
-                <section className='homePageMainContentSection'>
+            <div className='container shopLayout'>
+                <section className='shopProducts' id="desserts" aria-labelledby="desserts-title">
+                    <motion.div
+                        className='sectionHead'
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <h2 id="desserts-title" className='sectionTitle'>Desserts</h2>
+                        <p className='sectionSubtitle'>Handmade every morning — pick your favourites.</p>
+                    </motion.div>
 
-                    <Products itemCount={itemCount} setItemCount={setItemCount} />
-
-
-                    <Cart itemCount={itemCount} setItemCount={setItemCount} />
-
+                    <Products />
                 </section>
-            </main>
-        </section>
+
+                <Cart />
+            </div>
+
+            <MobileCartBar />
+        </main>
     )
 }
 

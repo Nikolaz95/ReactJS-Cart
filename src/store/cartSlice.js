@@ -29,12 +29,12 @@ const cartSlice = createSlice({
         },
         remove: (state, action) => {
             const productId = action.payload;
-            state.cartList = state.cartList.filter(product => product.id !== productId);
-            // Recalculate total after removal
+            // Find the product before filtering it out so the total can be recalculated
             const productToRemove = state.cartList.find(product => product.id === productId);
             if (productToRemove) {
                 state.total -= productToRemove.price * productToRemove.quantity;
             }
+            state.cartList = state.cartList.filter(product => product.id !== productId);
         },
         decrease: (state, action) => {
             const productId = action.payload;

@@ -1,16 +1,127 @@
-
-
 .cartProductSection {
     display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: white;
-        border-radius: 30px;
-        height: fit-content;
-        padding: 10px;
+    flex-direction: column;
+    gap: 18px;
 }
 
-.cartProductSectionContent {
+.cartProductList {
+    list-style: none;
+}
+
+.cartProductItem {
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+}
+
+.cartProductRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.cartProductThumb {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.cartProductInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.cartProductName {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cartProductMeta {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.cartProductQty {
+    display: inline-flex;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.cartProductUnit {
+    color: var(--muted);
+}
+
+.cartProductTotal {
+    color: var(--ink-soft);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.cartRemoveBtn {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid #cdb7af;
+    border-radius: 50%;
+    background: transparent;
+    color: #a88b82;
+    font-size: 11px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.cartRemoveBtn:hover {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+}
+
+.orderTotalContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.orderTotalText {
+    color: var(--ink-soft);
+    font-weight: 600;
+}
+
+.orderTotalPrice {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.carbonNeutral {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 14px;
+    background: var(--bg);
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+.carbonIcon {
+    width: 22px;
+    height: 22px;
+}
+
+.confirmButton {
     display: flex;
     flex-direction: column;
     gap: 10px;

@@ -1,83 +1,62 @@
-
 .cartSection {
+    position: sticky;
+    top: calc(var(--header-h) + 20px);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: white;
-    border-radius: 30px;
-    height: fit-content;
-    padding: 10px;
-    /* border: 1px solid black; */
-}
-
-.cartContent {
-    display: flex;
-    flex-direction: column;
-    /* width: 100%; */
     gap: 20px;
+    padding: clamp(20px, 2.5vw, 28px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    max-height: calc(100vh - var(--header-h) - 40px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
 }
 
 .cartHeaderText {
+    font-size: 26px;
+    color: var(--accent);
+}
+
+.cartCount {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+/* empty state */
+.cartEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0 8px;
     text-align: center;
 }
 
-.imageContent {
-    width: 220px;
-    height: 220px;
+.cartEmptyImage {
+    width: 140px;
+    height: 140px;
 }
 
-
-/* kada je nesto u korpi */
-
-.cartMainContent {
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
-
-.cartProductInfoContent {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.cartEmptyImage img {
     width: 100%;
-    /* border: 1px solid; */
+    height: 100%;
 }
 
-.cartProductInfoSection {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+.cartEmptyText {
+    color: var(--muted);
+    font-weight: 600;
 }
 
-.articleSeperator {
-    border: 1px solid;
-}
-
-
-.cartBottomContent {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.orderTotalContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.carbonNeutral {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.confirmButton {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
+@media (max-width: 1023px) {
+    .cartSection {
+        position: relative;
+        top: auto;
+        max-height: none;
+        overflow: visible;
+        width: min(640px, 100%);
+        margin-inline: auto;
+    }
 }

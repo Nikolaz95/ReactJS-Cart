@@ -1,0 +1,29 @@
+.scrollTopBtn {
+    position: fixed;
+    right: var(--gutter);
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    z-index: 900;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-size: 20px;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.scrollTopBtn:hover {
+    background: var(--accent);
+}
+
+/* leave room for the floating cart bar on smaller screens */
+@media (max-width: 1023px) {
+    .scrollTopBtn {
+        bottom: calc(96px + env(safe-area-inset-bottom));
+    }
+}

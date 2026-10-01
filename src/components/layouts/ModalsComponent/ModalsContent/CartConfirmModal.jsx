@@ -1,108 +1,144 @@
-import React, { useRef } from 'react';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
+import React, { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { motion } from 'framer-motion';
 //import css
 import "./CartConfirmModal.css";
 
-//import img
-import confirm from "../../../../assets/logoIcon/icon-confirm.png";
-import cancel from "../../../../assets/logoIcon/icon-cancelPic.png";
-
-
 
 //import components
-import Image from '../../LogoIcon/Image';
 import Button from '../../Buttons/Button';
 import Invoice from '../../InvoicePDF/Invoice';
+import { CheckIcon, CloseIcon } from '../../Icons/Icons';
+import { formatPrice } from '../../Animated/Animated';
 
+const list = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.07, delayChildren: 0.25 } },
+};
 
-const CartConfirmModal = ({ onClose, products, total, handleClearCart }) => {
+const item = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 400, damping: 30 } },
+};
+
+const CartConfirmModal = ({ onClose, products, total, onComplete }) => {
     const invoiceRef = useRef(null);
+    const [status, setStatus] = useState('idle');
 
-    const handleDownload = () => {
+    const handleDownload = async () => {
         const input = invoiceRef.current;
+        setStatus('loading');
 
         // Temporarily show the Invoice for capturing
         input.style.display = 'block';
 
-        // Generate the PDF
-        html2canvas(input, { scale: 3 })
-            .then((canvas) => {
-                const imgData = canvas.toDataURL("image/png");
-                const pdf = new jsPDF();
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        try {
+            // PDF libraries are loaded only when needed to keep the initial bundle small
+            const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+                import('html2canvas'),
+                import('jspdf'),
+            ]);
 
-                pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-                pdf.save(`invoice_customNikolaZovko.pdf`);
-                handleClearCart()
-            })
-            .catch((error) => {
-                console.error('Error generating PDF:', error);
-            })
-            .finally(() => {
-                // Hide the Invoice again
-                input.style.display = 'none';
-            });
+            // Generate the PDF
+            const canvas = await html2canvas(input, { scale: 2, backgroundColor: '#ffffff' });
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF();
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+            pdf.save(`invoice_customNikolaZovko.pdf`);
+            onComplete();
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+            setStatus('error');
+        } finally {
+            // Hide the Invoice again
+            input.style.display = 'none';
+        }
     };
 
 
     return (
         <div className='modalConfirmSummary'>
+            <motion.button
+                className="modalCloseBtn"
+                onClick={onClose}
+                aria-label="Close"
+                whileHover={{ rotate: 90 }}
+                whileTap={{ scale: 0.85 }}
+            >
+                <CloseIcon />
+            </motion.button>
+
             <div className='modalConfirmHeader'>
-                <Button onClick={onClose} variant="modalCloseX">
-                    <Image src={cancel} alt={"here should be a picture"} variant="iconImg" />
-                </Button>
-                <h1 className='modalConfirmTitleText'>We hope you enjoy your food!</h1>
+                <motion.div
+                    className="modalCheck"
+                    initial={{ scale: 0, rotate: -45 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 14, delay: 0.1 }}
+                >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <motion.path
+                            d="m5 12.5 4.5 4.5L19 7.5"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ delay: 0.35, duration: 0.45, ease: 'easeOut' }}
+                        />
+                    </svg>
+                </motion.div>
+                <h2 id="confirm-title" className='modalConfirmTitleText'>Confirm your order</h2>
+                <p className='modalConfirmSubtitle'>We hope you enjoy your food!</p>
             </div>
 
-            <div className='modalConfirmOrderContent'>
-                {/*confirm order list start  */}
-                {products.map((product) => {
-                    const totalProductCost = product.quantity * product.price; // Calculate total for each product
-                    return (
-                        <div key={product.id} className="productOrderedSummary">
-                            <div className="productOrderedInnerSummary">
-                                <Image src={product.image}
-                                    alt="Product Image"
-                                    variant="iconImgProduct" />
-                                <div className="productOrderedSummaryList">
-                                    <div className="productOrderedSummaryListTop">
-                                        <p>{product.name}</p>
-                                    </div>
-                                    <div className="productOrderedSummaryListBottom">
-                                        <p>{product.quantity} x</p>
-                                        <p>$ {product.price}</p>
-                                        <p>$ {totalProductCost.toFixed(2)}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="articleSeperator"></div>
+            <motion.ul className='modalConfirmOrderContent' variants={list} initial="hidden" animate="visible">
+                {products.map((product) => (
+                    <motion.li key={product.id} className="productOrderedSummary" variants={item}>
+                        <img src={product.image} alt="" className="productOrderedThumb" />
+                        <div className="productOrderedInfo">
+                            <p className="productOrderedName">{product.name}</p>
+                            <p className="productOrderedMeta">
+                                <span className="productOrderedQty">{product.quantity}x</span>
+                                <span>@ {formatPrice(product.price)}</span>
+                            </p>
                         </div>
-                    );
-                })}
+                        <p className="productOrderedTotal">{formatPrice(product.quantity * product.price)}</p>
+                    </motion.li>
+                ))}
+                <motion.li className="modalConfirmOrder" variants={item}>
+                    <p>Order Total</p>
+                    <p className="modalConfirmTotal">{formatPrice(total)}</p>
+                </motion.li>
+            </motion.ul>
+
+            {status === 'error' && (
+                <p className="modalConfirmError" role="alert">Something went wrong while creating the invoice. Please try again.</p>
+            )}
+
+            <div className="modalConfirmBtn" >
+                <Button variant="primary block" onClick={handleDownload} disabled={status === 'loading'}>
+                    {status === 'loading' ? (
+                        <>
+                            <span className="buttonSpinner" /> Preparing invoice…
+                        </>
+                    ) : (
+                        <>
+                            Confirm & download invoice <CheckIcon />
+                        </>
+                    )}
+                </Button>
+                <Button variant="ghost block" onClick={onClose}>
+                    Keep shopping
+                </Button>
             </div>
 
-            <div className='modalConfirmBotton'>
-                <div className="modalConfirmOrder">
-                    <p>Order Total :</p>
-                    <p>$ {total} </p>
-                </div>
-
-                <div className="modalConfirmBtn" >
-                    <Button variant="confirmOrder" onClick={handleDownload}>
-                        Confirm Order!<Image src={confirm} alt={"here should be a picture"} variant="iconImg" />
-                    </Button>
-                    {/* <Button variant="cancelOrder" onClick={handleCancelOrder}>
-                        Cancel Order!<Image src={cancel} alt={"here should be a picture"} variant="iconImg" />
-                    </Button> */}
-                </div>
-            </div>
-
-            <div ref={invoiceRef} style={{ display: 'none' }}>
-                <Invoice products={products} />
-            </div>
-
+            {/* Invoice is rendered off to the side and only shown while capturing the PDF */}
+            {createPortal(
+                <div ref={invoiceRef} className="invoiceStage" style={{ display: 'none' }}>
+                    <Invoice products={products} />
+                </div>,
+                document.body
+            )}
         </div>
     );
 };

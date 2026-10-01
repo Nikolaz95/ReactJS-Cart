@@ -1,15 +1,19 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 //import css
 import './Button.css';
 
-const Button = ({ onClick, children, variant, icon, active }) => {
+const Button = ({ onClick, children, variant = '', className = '', type = 'button', ...props }) => {
     return (
-        <button
+        <motion.button
+            type={type}
             onClick={onClick}
-            className={`button ${variant} ${active ? 'active' : 'notActive'}`}>
+            whileTap={{ scale: 0.96 }}
+            className={`button ${variant} ${className}`.trim()}
+            {...props}>
             {children}
-        </button>
+        </motion.button>
     )
 }
 

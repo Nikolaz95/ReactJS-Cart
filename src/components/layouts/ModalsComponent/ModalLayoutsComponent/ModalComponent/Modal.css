@@ -1,26 +1,29 @@
-
-body.modalContent {
-    overflow: hidden;
-    position: fixed;
-}
-
 .modalContent {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
     position: relative;
-    max-width: 500px;
+    width: min(540px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    outline: none;
+}
+
+/* bottom sheet on phones */
+.modalContent.isSheet {
     width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 92vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
 }
-  
-.closeButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
+
+.modalContent.isSheet::before {
+    content: "";
+    display: block;
+    width: 44px;
+    height: 5px;
+    margin: 10px auto 0;
+    border-radius: 999px;
+    background: var(--line);
 }
-  

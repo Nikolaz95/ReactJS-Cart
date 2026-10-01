@@ -1,24 +1,59 @@
-.spinner {
-    display: flex;
-    width: 14.4px;
-    height: 14.4px;
-    border-radius: 14.4px;
-    box-shadow: 36px 0px 0 0 rgba(71,75,255,0.2), 29.2px 21.2px 0 0 rgba(71,75,255,0.4), 11.16px 34.2px 0 0 rgba(71,75,255,0.6), -11.16px 34.2px 0 0 rgba(71,75,255,0.8), -29.2px 21.2px 0 0 #474bff;
-    animation: spinner-b87k6z 1s infinite linear;
- }
- 
- @keyframes spinner-b87k6z {
-    to {
-       transform: rotate(360deg);
-    }
- }
+.loaderContainer {
+    min-height: 40vh;
+}
 
- .loaderContainer {
+.skeletonCard {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40vh;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
+    flex-direction: column;
+    gap: 10px;
+    animation: skeletonIn 0.5s ease both;
+}
+
+.shimmer {
+    border-radius: 8px;
+    background: linear-gradient(100deg, #f2e6df 30%, #fbf4f0 50%, #f2e6df 70%);
+    background-size: 300% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonImage {
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    margin-bottom: 26px;
+}
+
+.skeletonLine {
+    height: 14px;
+    width: 80%;
+}
+
+.short {
+    width: 40%;
+}
+
+.price {
+    width: 25%;
+    height: 18px;
+}
+
+@keyframes shimmer {
+    from {
+        background-position: 100% 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+@keyframes skeletonIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+@media (max-width: 479px) {
+    .skeletonImage {
+        aspect-ratio: 4 / 3;
+    }
 }

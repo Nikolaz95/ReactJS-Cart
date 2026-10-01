@@ -1,74 +1,57 @@
-
-
-.erorTopContent {
+.erorContent {
     display: flex;
-    flex-direction: row;
-    padding: 50px;
+    align-items: center;
+    min-height: calc(100vh - var(--header-h) - 120px);
+    padding: clamp(40px, 8vw, 96px) 0;
 }
 
 .mainContent {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    min-height: 60vh;
-}
-
-
-img {
-    font-size: 150px;
-}
-
-.textEror, .imgEror {
-    font-size: 50px;
-    color: red;
-    animation: vibrate-1 0.3s linear infinite both;
-}
-
-@keyframes vibrate-1 {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
-}
-
-
-@media  screen and (max-width: 1300px) {
-.erorContent {
-    position: relative;
-}
-}
-
-@media  screen and (max-width: 430px) {
-.erorContent {
-    position: relative;
-}
-
-.textEror {
-    font-size: 40px;
+    gap: 12px;
+    text-align: center;
 }
 
 .imgEror {
-    width: 100px;
-    height: 100px;
+    width: 72px;
+    height: 72px;
 }
 
+.errorCode {
+    display: flex;
+    gap: 0.05em;
+    font-size: clamp(110px, 26vw, 220px);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.04em;
 }
 
+.errorCode span {
+    display: inline-block;
+    text-shadow: 0 18px 40px rgba(199, 59, 15, 0.25);
+}
 
-@media  screen and (max-width: 350px) {
-.erorContent {
-    position: relative;
+.errorCode span:nth-child(2) {
+    font-style: italic;
+    color: var(--ink);
 }
 
 .textEror {
-    font-size: 30px;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700;
 }
 
-.imgEror {
-    width: 100px;
-    height: 100px;
+.textErorSub {
+    color: var(--muted);
 }
+
+.erorActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
 }

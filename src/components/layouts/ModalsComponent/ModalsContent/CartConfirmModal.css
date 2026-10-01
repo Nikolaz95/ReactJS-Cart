@@ -1,81 +1,154 @@
-
-
-
 .modalConfirmSummary {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    /* width: 400px; */
-    padding: 20px;
-    border-radius: 20px;
-    background-color: white;
+    gap: 22px;
+    padding: clamp(22px, 4vw, 36px);
+}
+
+.modalCloseBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.modalCloseBtn:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.modalConfirmHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modalCheck {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    box-shadow: 0 0 0 8px var(--green-soft);
+}
+
+.modalCheck svg {
+    width: 26px;
+    height: 26px;
 }
 
 .modalConfirmTitleText {
-    font-size: 20px;
-    text-align: center;
+    font-size: clamp(28px, 5vw, 38px);
 }
 
+.modalConfirmSubtitle {
+    color: var(--muted);
+}
+
+/* ordered products */
 .modalConfirmOrderContent {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    list-style: none;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    background: var(--bg);
 }
 
-
-
-.productOrderedInnerSummary {
+.productOrderedSummary {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    width: 100%;
-    gap: 20px;
-    padding: 5px;
-    background-color: rgb(252,249,247);
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
 }
 
-.productOrderedSummaryList {
+.productOrderedThumb {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.productOrderedInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.productOrderedName {
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.productOrderedMeta {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     gap: 10px;
-    width: 100%;
+    font-size: 14px;
+    color: var(--muted);
 }
 
-.productOrderedSummaryListTop {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.productOrderedQty {
+    color: var(--accent);
+    font-weight: 800;
 }
 
-.productOrderedSummaryListBottom {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.modalConfirmBotton {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.productOrderedTotal {
+    font-weight: 700;
 }
 
 .modalConfirmOrder {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0 12px;
+    color: var(--ink-soft);
+    font-weight: 600;
+}
+
+.modalConfirmTotal {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+}
+
+.modalConfirmError {
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .modalConfirmBtn {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
 }
 
-.invoiceHide {
-    display: none;
+/* invoice capture area (never visible to the user, sits under the modal overlay) */
+.invoiceStage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 760px;
+    z-index: -1;
+    pointer-events: none;
 }

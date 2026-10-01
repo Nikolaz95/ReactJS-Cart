@@ -1,0 +1,13 @@
+.rollingNumber {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    min-width: 1ch;
+    overflow: hidden;
+    vertical-align: bottom;
+    font-variant-numeric: tabular-nums;
+}
+
+.rollingNumber > span {
+    display: inline-block;
+}

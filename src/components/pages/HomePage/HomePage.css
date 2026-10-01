@@ -1,59 +1,41 @@
-
-body {
-    background-color: rgb(252,249,247);
+.homePage {
+    padding-bottom: clamp(48px, 8vw, 96px);
 }
 
-
-.homePageMain {
-    padding: 20px;
-    /* border: 1px solid black; */
-}
-
-.homePageHeaderContent {
-    padding: 10px;
-}
-
-
-.homePageHeader {
-    font-size: 30px;
-}
-
-
-
-/* content style */
-
-.homePageMainContentSection {
+/* products + cart layout */
+.shopLayout {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 20px;
-    /* border: 1px solid black; */
+    grid-template-columns: minmax(0, 1fr) 380px;
+    align-items: start;
+    gap: clamp(24px, 3vw, 40px);
 }
 
-
-/* .homepageCardContent {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-    gap: 10px;
-    border: 1px solid black;
-} */
-
-
-@media only screen and (max-width: 1024px) {
-    .homePageMainContentSection {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 20px;
-        border: 1px solid black;
-    } 
+.sectionHead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-bottom: 28px;
 }
 
-@media only screen and (max-width: 425px) {
-    .homePageMainContentSection {
-        display: grid;
-        grid-template-columns:  1fr;
-        gap: 20px;
-        border: 1px solid black;
-    } 
+.sectionTitle {
+    font-size: clamp(32px, 4vw, 44px);
 }
 
+.sectionSubtitle {
+    color: var(--muted);
+    font-weight: 500;
+}
+
+@media (max-width: 1199px) {
+    .shopLayout {
+        grid-template-columns: minmax(0, 1fr) 340px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .shopLayout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

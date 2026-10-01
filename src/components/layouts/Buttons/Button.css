@@ -1,119 +1,111 @@
 .button {
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 5px;
+    min-height: 48px;
+    padding: 12px 22px;
     border: none;
-    border-radius: 10px;
-    font-weight: bold;
+    border-radius: 999px;
+    font-weight: 700;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.9s ease;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-
-
-/*btn add to cart*/
-.button.addTocart   {
-    position: relative;
-    bottom: 25px;
-    left: 5rem;
-    width: 10rem;
-    border-radius: 2.5rem;
-    height: 2.5rem;
-}
-
-.btnDecInc {
-    border: 1px solid white;
-    background-color: transparent;
-    color: black;
-}
-
-.btnDecInc:hover{
-    background-color: white;
-}
-
-
-.button.countingBtn {
-    background-color: rgb(199,58,15);
-    position: relative;
-    bottom: 25px;
-    left: 5rem;
-    width: 10rem;
-    border-radius: 2.5rem;
-    height: 2.5rem;
-}
-
-
-
-.modalCloseX {
-    color: rgb(135, 0, 0);
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.confirmOrder {
-    display: flex;
+.button svg {
     font-size: 18px;
-    font-weight: bold;
-    justify-content: center;
+    flex-shrink: 0;
 }
 
-
-/* modal btn */
-
-.confirmOrder:hover {
-    background-color: green;
-    color: white;
+.button:disabled {
+    cursor: progress;
+    opacity: 0.85;
 }
 
-.cancelOrder {
-    font-size: 18px;
-    font-weight: bold;
+/* primary – accent with light sweep on hover */
+.button.primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 10px 24px -10px rgba(199, 59, 15, 0.7);
 }
 
-.cancelOrder:hover {
-    background-color: rgb(209, 22, 22);;
-    color: white;
+.button.primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.7s var(--ease-out);
 }
 
-.clearcart {
-    display: flex;
-    font-size: 18px;
-    font-weight: bold;
-    justify-content: center;
+.button.primary:hover {
+    background: var(--accent-strong);
+    box-shadow: 0 14px 30px -10px rgba(199, 59, 15, 0.8);
 }
 
-.clearcart:hover {
-    background-color: rgb(223, 71, 16);;
-    color: white;
+.button.primary:hover::after {
+    transform: translateX(120%);
 }
 
-.removeItemCartModal {
-    color: rgb(135, 0, 0);
-    background-color: transparent;
-    cursor: pointer;
+/* ghost – outlined */
+.button.ghost {
+    background: transparent;
+    color: var(--ink-soft);
+    border: 1.5px solid var(--line);
 }
 
+.button.ghost:hover {
+    border-color: var(--ink-soft);
+    color: var(--ink);
+    background: var(--bg);
+}
 
+/* light – for dark backgrounds / hero */
+.button.light {
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+}
 
+.button.light:hover {
+    box-shadow: var(--shadow-md);
+}
 
-@media only screen and (max-width: 1024px) {
-    .button.addTocart   {
-        position: relative;
-        bottom: 25px;
-        left: 20px;
-        width: 10rem;
-        border-radius: 2.5rem;
-        height: 2.5rem;
-    } 
-    .button.countingBtn {
-        position: relative;
-        bottom: 25px;
-        left: 20px;
-        width: 10rem;
-        border-radius: 2.5rem;
-        height: 2.5rem;
+/* round icon only button */
+.button.iconBtn {
+    min-height: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink-soft);
+}
+
+.button.iconBtn:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.button.block {
+    width: 100%;
+}
+
+.buttonSpinner {
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: buttonSpin 0.7s linear infinite;
+}
+
+@keyframes buttonSpin {
+    to {
+        transform: rotate(360deg);
     }
 }

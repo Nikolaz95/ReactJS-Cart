@@ -4,6 +4,8 @@ A shopping cart for a dessert shop, built with **React 18**, **Redux Toolkit** a
 Pick desserts, watch them fly into your cart, adjust quantities and download a PDF invoice when you confirm the order.
 It works on phones, tablets and desktops.
 
+**🔗 Live demo: [react-js-cart.vercel.app](https://react-js-cart.vercel.app/)**
+
 ![Sweet Bites – home](screenshots/desktop-home.png)
 
 ---
